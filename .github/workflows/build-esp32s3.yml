@@ -35,9 +35,8 @@ jobs:
           cd build
           esptool.py --chip ESP32-S3 merge_bin -o ../release/pico_fido_${{ steps.get_version.outputs.version }}_esp32-s3.bin @flash_args
           cd ..
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
         with:
-          name: pico-fido-esp32s3-firmware
-          path: release/pico_fido_${{ steps.get_version.outputs.version }}_esp32-s3.bin
+          files: release/pico_fido_${{ steps.get_version.outputs.version }}_esp32-s3.bin
 
